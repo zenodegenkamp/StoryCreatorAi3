@@ -12,16 +12,16 @@ const openai = new OpenAI({
 const handler = async (event) => {
   console.log("event.body" + event.body)
 
+ // Parse the JSON string from event.body into an object
+ const requestBody = JSON.parse(event.body);
 
+ // Validate the mainCharacter parameter.
+ if (typeof requestBody.mainCharacter !== 'string') {
+   throw new Error('The mainCharacter parameter must be a string.');
+ }
 
-   // Validate the main character parameter.
-   if (typeof event.body.mainCharacter !== 'string') {
-    throw new Error('The mainCharacter parameter must be a string.');
-  }
-
-  const mainCharacter = event.body.mainCharacter;
-  console.log(mainCharacter = "ik ben de main character in de functie")
-
+ const mainCharacter = requestBody.mainCharacter;
+ console.log(mainCharacter); // Access mainCharacter as a string
 
   try {
      const completion = await openai.completions.create({
