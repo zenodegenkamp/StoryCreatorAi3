@@ -3,7 +3,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  eslint: false,
+  // ESLint is disabled for experimental use.
+  // eslint: false,
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig;  
