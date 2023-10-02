@@ -42,75 +42,95 @@ export async function fetchBotReply(mainCharacter) {
 
 export async function fetchShortStory(mainCharacter, plot) {
 
-  const response = await openai.completions.create({
-    model: 'text-davinci-003',
-    prompt: `Generate an enchanting story for children that can be read before bedtime.
 
-    The story should align with the main character ${mainCharacter} and the plot ${plot}. Ensure that the story is geared towards children and has a comforting, positive tone. Use simple and understandable language suitable for young listeners. Create a short story, similar in length to a tweet. Let your creativity flow and craft a tale that sparks the imagination of children! Here are some examples of similar stories:
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchStory'
 
-    ###
-    main character: Zeno
-    Plot: Zeno discovers a magical garden full of adventure.
-    story: In a quiet village, there lived a boy named Zeno, known for his endless curiosity and sparkling smile. One sunny day, while playing amidst the colorful flowers, Zeno stumbled upon a hidden path. This path led him to a magical garden, unlike anything he had ever seen. The garden was adorned with glittering butterflies, chatty birds, and secret corners waiting to be explored. Zeno embarked on an extraordinary adventure, filled with new friends and enchanting creatures. Each day brought new discoveries, and his heart danced with wonder.
-    ###
-    main character: Max
-    Plot: Max embarks on an exciting journey to the stars
-    story: Meet Max, a young dreamer whose fascination with the twinkling stars knew no bounds. One fateful night, a brilliant star descended from the sky, beckoning Max to follow. With a heart full of courage, Max embarked on an extraordinary journey through the velvety night sky. Along the way, he encountered cheerful moon beings, graceful comets, and friendly planets, all of whom welcomed him with open arms. Max learned that even in the darkest night, dreams could light the way.
-    ###
-    main character: Patrick
-    Plot: Patrick goes on a magical forest adventure
-    story: In a whimsical forest, there lived a young boy named Patrick, his heart brimming with boundless adventure. One sunny morning, Patrick stumbled upon a mysterious flute, its melody more enchanting than any he had ever heard. The flute led him deeper into the forest, where he met talking trees, mischievous elves, and babbling brooks. Together with his newfound forest friends, Patrick embarked on a magical adventure, unveiling nature's hidden secrets and surprising wonders.
-    ###
+  const body = {
+    mainCharacter: mainCharacter,
+    plot: plot
+  }
 
-    main character: ${mainCharacter}
-    plot: ${plot}
-    story: 
-    `,
-    max_tokens: 200,
-    temperature: 0.7
-  })
-  return response.choices[0].text
-}
-
-
-
-
-export async function fetchUrlForImage(shortStory) {
-
-  const response = await openai.completions.create({
-    model: 'text-davinci-003',
-    prompt: `
-    Generate a description for an image that illustrates the enchanting story created earlier.
-    The image should align with the story ${shortStory}.
-
-    ### 
-    Short Story: In a magical forest, Mia discovers a mysterious door leading to a world full of colors and joy.
-    Image Prompt: No text in the image. Imagine stepping through an enchanting door and witnessing a splendid landscape, with colorful trees and friendly animals greeting you. Mia stands in awe as the magical world unfolds before her.
-    ###
-    Short Story: During an enchanting night, Liam travels on the back of a star to a realm filled with dreams and adventures.
-    Image Prompt: No text in the image. Picture yourself floating through the nighttime sky on the back of a radiant star. Stars twinkle around you as you enter a world of shimmering dreams. Liam smiles as he explores the realm of adventures.
-    ### 
-    Short Story: ${shortStory}
-    Image Prompt:
-    `,
-    max_tokens: 200,
-    temperature: 0.8
-  })
-  return response.choices[0].text
-
-}
-
-export async function fetchImage(imagePrompt){
-  const response = await openai.images.generate({
-    prompt: `No text on the illustration. Create a colorful and magical illustration that perfectly complements ${imagePrompt}`,
-    n: 1,
-    size: '256x256',
-    response_format: 'url' 
-  })
-
-  return response.data[0]?.url
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'text/plain',
+      },
+      body: mainCharacter, plot
+    })
+    const data = await response.json()
   
+    return data
+  // const response = await openai.completions.create({
+  //   model: 'text-davinci-003',
+  //   prompt: `Generate an enchanting story for children that can be read before bedtime.
+
+  //   The story should align with the main character ${mainCharacter} and the plot ${plot}. Ensure that the story is geared towards children and has a comforting, positive tone. Use simple and understandable language suitable for young listeners. Create a short story, similar in length to a tweet. Let your creativity flow and craft a tale that sparks the imagination of children! Here are some examples of similar stories:
+
+  //   ###
+  //   main character: Zeno
+  //   Plot: Zeno discovers a magical garden full of adventure.
+  //   story: In a quiet village, there lived a boy named Zeno, known for his endless curiosity and sparkling smile. One sunny day, while playing amidst the colorful flowers, Zeno stumbled upon a hidden path. This path led him to a magical garden, unlike anything he had ever seen. The garden was adorned with glittering butterflies, chatty birds, and secret corners waiting to be explored. Zeno embarked on an extraordinary adventure, filled with new friends and enchanting creatures. Each day brought new discoveries, and his heart danced with wonder.
+  //   ###
+  //   main character: Max
+  //   Plot: Max embarks on an exciting journey to the stars
+  //   story: Meet Max, a young dreamer whose fascination with the twinkling stars knew no bounds. One fateful night, a brilliant star descended from the sky, beckoning Max to follow. With a heart full of courage, Max embarked on an extraordinary journey through the velvety night sky. Along the way, he encountered cheerful moon beings, graceful comets, and friendly planets, all of whom welcomed him with open arms. Max learned that even in the darkest night, dreams could light the way.
+  //   ###
+  //   main character: Patrick
+  //   Plot: Patrick goes on a magical forest adventure
+  //   story: In a whimsical forest, there lived a young boy named Patrick, his heart brimming with boundless adventure. One sunny morning, Patrick stumbled upon a mysterious flute, its melody more enchanting than any he had ever heard. The flute led him deeper into the forest, where he met talking trees, mischievous elves, and babbling brooks. Together with his newfound forest friends, Patrick embarked on a magical adventure, unveiling nature's hidden secrets and surprising wonders.
+  //   ###
+
+  //   main character: ${mainCharacter}
+  //   plot: ${plot}
+  //   story: 
+  //   `,
+  //   max_tokens: 200,
+  //   temperature: 0.7
+  // })
+  // return response.choices[0].text
 }
+
+
+///////
+
+// export async function fetchUrlForImage(shortStory) {
+
+//   const response = await openai.completions.create({
+//     model: 'text-davinci-003',
+//     prompt: `
+//     Generate a description for an image that illustrates the enchanting story created earlier.
+//     The image should align with the story ${shortStory}.
+
+//     ### 
+//     Short Story: In a magical forest, Mia discovers a mysterious door leading to a world full of colors and joy.
+//     Image Prompt: No text in the image. Imagine stepping through an enchanting door and witnessing a splendid landscape, with colorful trees and friendly animals greeting you. Mia stands in awe as the magical world unfolds before her.
+//     ###
+//     Short Story: During an enchanting night, Liam travels on the back of a star to a realm filled with dreams and adventures.
+//     Image Prompt: No text in the image. Picture yourself floating through the nighttime sky on the back of a radiant star. Stars twinkle around you as you enter a world of shimmering dreams. Liam smiles as he explores the realm of adventures.
+//     ### 
+//     Short Story: ${shortStory}
+//     Image Prompt:
+//     `,
+//     max_tokens: 200,
+//     temperature: 0.8
+//   })
+//   return response.choices[0].text
+
+// }
+
+// export async function fetchImage(imagePrompt){
+//   const response = await openai.images.generate({
+//     prompt: `No text on the illustration. Create a colorful and magical illustration that perfectly complements ${imagePrompt}`,
+//     n: 1,
+//     size: '256x256',
+//     response_format: 'url' 
+//   })
+
+//   return response.data[0]?.url
+  
+// }
+
+//////////////
 
 
 // export async function fetchStory(mainCharacter, plot) {
