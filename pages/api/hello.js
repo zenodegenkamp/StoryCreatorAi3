@@ -14,6 +14,8 @@ export async function fetchBotReply(mainCharacter) {
       },
       body: mainCharacter
     })
+
+    console.log(response.status)
     const data = await response.json()
 
     console.log("APIFILE " + JSON.stringify(data));
