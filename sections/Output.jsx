@@ -1,8 +1,8 @@
 'use client';
 import fetchBotReply from '../pages/api/hello'
-import { fetchShortStory } from '../pages/api/hello'
-import { fetchUrlForImage } from '../pages/api/hello'
-import { fetchImage } from '../pages/api/hello'
+// import { fetchShortStory } from '../pages/api/hello'
+// import { fetchUrlForImage } from '../pages/api/hello'
+// import { fetchImage } from '../pages/api/hello'
 import React from 'react'
 
 import { motion } from 'framer-motion';
@@ -46,32 +46,32 @@ export default function Output(props){
       setLoading(true)
   }, [])
 
-  React.useEffect(() => {
-      async function fetchStory (){
+  // React.useEffect(() => {
+  //     async function fetchStory (){
 
-          try{
+  //         try{
 
-            if (mainCharacter && plot){
+  //           if (mainCharacter && plot){
 
             
-              const shortStory = await fetchShortStory(mainCharacter, props.FeedbackData?.plot)
-              setAiStory(shortStory)
-              const urlToImage = await fetchUrlForImage(shortStory)
-              const image = await fetchImage(urlToImage)
+  //             const shortStory = await fetchShortStory(mainCharacter, props.FeedbackData?.plot)
+  //             setAiStory(shortStory)
+  //             const urlToImage = await fetchUrlForImage(shortStory)
+  //             const image = await fetchImage(urlToImage)
               
-              if (image){
-                  setAiImage(image)
-                  setLoading(false)
-              }
-          }
-          } catch (error) {
-              console.error('Error fetching other data:', error)
-          }
-      }
-      if(loading){
-          fetchStory()
-      }
-  }, [loading, mainCharacter, plot])
+  //             if (image){
+  //                 setAiImage(image)
+  //                 setLoading(false)
+  //             }
+  //         }
+  //         } catch (error) {
+  //             console.error('Error fetching other data:', error)
+  //         }
+  //     }
+  //     if(loading){
+  //         fetchStory()
+  //     }
+  // }, [loading, mainCharacter, plot])
 
 
 
