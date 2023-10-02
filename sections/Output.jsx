@@ -1,5 +1,5 @@
 'use client';
-import { fetchBotReply } from '../pages/api/hello'
+import fetchBotReply from '../pages/api/hello'
 import { fetchShortStory } from '../pages/api/hello'
 import { fetchUrlForImage } from '../pages/api/hello'
 import { fetchImage } from '../pages/api/hello'

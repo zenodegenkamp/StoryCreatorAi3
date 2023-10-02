@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 
-export async function fetchBotReply(mainCharacter) {
+export default async function fetchBotReply(mainCharacter) {
   const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAI';
 
   try {
