@@ -29,7 +29,7 @@ export default function Output(props){
         try {
           if (mainCharacter){
             console.log(mainCharacter)
-            const response = await fetchBotReply(mainCharacter);
+            const response = await fetchBotReply(String(mainCharacter));
             console.log("response" + response.reply)
             setAiResponse(response)
             setLoading(true)
