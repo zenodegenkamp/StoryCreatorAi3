@@ -98,7 +98,7 @@ export async function fetchBotReply(mainCharacter) {
   //   temperature: 0.7
   // })
   // return response.choices[0].text
-}
+// }
 
 
 ///////
