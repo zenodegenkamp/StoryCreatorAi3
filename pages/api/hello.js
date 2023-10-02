@@ -105,96 +105,91 @@ export async function fetchImage(imagePrompt){
 }
 
 
-export async function fetchStory(mainCharacter, plot) {
+// export async function fetchStory(mainCharacter, plot) {
 
-  const response = await openai.completions.create({
-    model: 'text-davinci-003',
-    prompt: `
-    Generate an enchanting children's story that can be read before bedtime.
-    The story should suit the main character ${mainCharacter} and the plot ${plot}.
-    Ensure that the story is child-friendly with a comforting and positive tone. Use simple and understandable language suitable for young listeners. Divide the text into 5 parts, each with its own topic and suitable for creating a corresponding image. Let your creativity run wild and create a story that sparks the imagination of children! Here are some examples of similar stories:
-    ###
-    Main Character: Zeno
-    Plot: Zeno discovers a magical garden full of adventure.
-    Story: 
-    Part 1: Introduction and Setting
-    Zeno was a curious boy who lived on the outskirts of the village. He loved adventure, and his eyes sparkled when he thought of the night sky.
+//   const response = await openai.completions.create({
+//     model: 'text-davinci-003',
+//     prompt: `
+//     Generate an enchanting children's story that can be read before bedtime.
+//     The story should suit the main character ${mainCharacter} and the plot ${plot}.
+//     Ensure that the story is child-friendly with a comforting and positive tone. Use simple and understandable language suitable for young listeners. Divide the text into 5 parts, each with its own topic and suitable for creating a corresponding image. Let your creativity run wild and create a story that sparks the imagination of children! Here are some examples of similar stories:
+//     ###
+//     Main Character: Zeno
+//     Plot: Zeno discovers a magical garden full of adventure.
+//     Story: 
+//     Part 1: Introduction and Setting
+//     Zeno was a curious boy who lived on the outskirts of the village. He loved adventure, and his eyes sparkled when he thought of the night sky.
     
-    Part 2: The Enchanting Beginning
-    One day, while playing in his backyard, Zeno saw a shimmering stone. When he touched the stone, a secret gate opened to a beautiful garden he had never seen before.
+//     Part 2: The Enchanting Beginning
+//     One day, while playing in his backyard, Zeno saw a shimmering stone. When he touched the stone, a secret gate opened to a beautiful garden he had never seen before.
     
-    Part 3: Magical Friends
-    In the garden, Zeno met talking animals and joyful elves. They told him about their secret adventures and invited Zeno to join them on a journey.
+//     Part 3: Magical Friends
+//     In the garden, Zeno met talking animals and joyful elves. They told him about their secret adventures and invited Zeno to join them on a journey.
     
-    Part 4: Enchanting Challenges
-    To maintain the garden's enchantment, Zeno had to complete some tasks. He had to water flowers with rainbow water and build a tower from stones and sticks.
+//     Part 4: Enchanting Challenges
+//     To maintain the garden's enchantment, Zeno had to complete some tasks. He had to water flowers with rainbow water and build a tower from stones and sticks.
     
-    Part 5: A Magical Ending
-    After many days of adventure and friendship, Zeno spent one last night in the magical garden. He gazed at the sparkling stars and knew that the memories of this enchanting adventure would stay with him forever.
+//     Part 5: A Magical Ending
+//     After many days of adventure and friendship, Zeno spent one last night in the magical garden. He gazed at the sparkling stars and knew that the memories of this enchanting adventure would stay with him forever.
     
-    ###
-    Main Character: Max
-    Plot: Max embarks on an exciting journey to the stars.
-    Story: 
-    Part 1: Introduction and Setting
-    Max was a cheerful boy who gazed at the stars every night. He lived in a house with a large window overlooking the night sky.
+//     ###
+//     Main Character: Max
+//     Plot: Max embarks on an exciting journey to the stars.
+//     Story: 
+//     Part 1: Introduction and Setting
+//     Max was a cheerful boy who gazed at the stars every night. He lived in a house with a large window overlooking the night sky.
     
-    Part 2: The Journey Begins
-    One night, a sparkling star appeared, seeming to draw closer. Max decided to follow the star and was taken on a journey through space.
+//     Part 2: The Journey Begins
+//     One night, a sparkling star appeared, seeming to draw closer. Max decided to follow the star and was taken on a journey through space.
     
-    Part 3: Friends in Space
-    Along the way, Max met friendly extraterrestrial beings with sparkling eyes and funny sounds. They shared their stories and showed Max how they danced among the stars.
+//     Part 3: Friends in Space
+//     Along the way, Max met friendly extraterrestrial beings with sparkling eyes and funny sounds. They shared their stories and showed Max how they danced among the stars.
     
-    Part 4: The Radiant Challenge
-    To return home, Max had to complete a heroic task. He had to return a lost star to the heart of the Milky Way, where it would shine brighter than ever before.
+//     Part 4: The Radiant Challenge
+//     To return home, Max had to complete a heroic task. He had to return a lost star to the heart of the Milky Way, where it would shine brighter than ever before.
     
-    Part 5: A Starry Night to Remember
-    With the star back in its place, Max returned to Earth. He fell asleep with memories of the enchanting journey to the stars, knowing that the night sky was full of mysteries waiting for him.
+//     Part 5: A Starry Night to Remember
+//     With the star back in its place, Max returned to Earth. He fell asleep with memories of the enchanting journey to the stars, knowing that the night sky was full of mysteries waiting for him.
     
-    ###
-    Main Character: Patrick
-    Plot: Patrick embarks on an enchanting forest adventure
+//     ###
+//     Main Character: Patrick
+//     Plot: Patrick embarks on an enchanting forest adventure
     
-    Part 1: Introduction and Setting
-    Patrick was a curious boy who lived on the edge of an enchanting forest. He loved the sounds of singing birds and rustling leaves.
+//     Part 1: Introduction and Setting
+//     Patrick was a curious boy who lived on the edge of an enchanting forest. He loved the sounds of singing birds and rustling leaves.
     
-    Part 2: The Enchanting Beginning
-    One sunny morning, Patrick found a mysterious map leading to a secret place deep in the forest. He followed the path and discovered a magical gate.
+//     Part 2: The Enchanting Beginning
+//     One sunny morning, Patrick found a mysterious map leading to a secret place deep in the forest. He followed the path and discovered a magical gate.
     
-    Part 3: Friends of the Forest
-    In the forest, Patrick met talking animals and playful fairies. They invited him to join their games and learn the secrets of the forest.
+//     Part 3: Friends of the Forest
+//     In the forest, Patrick met talking animals and playful fairies. They invited him to join their games and learn the secrets of the forest.
     
-    Part 4: Enchanting Challenges
-    To protect the enchanting forest, Patrick had to complete three tasks: build a rainbow bridge over a babbling stream, sing a song that made the trees dance, and restore a sparkling fountain.
+//     Part 4: Enchanting Challenges
+//     To protect the enchanting forest, Patrick had to complete three tasks: build a rainbow bridge over a babbling stream, sing a song that made the trees dance, and restore a sparkling fountain.
     
-    Part 5: A Magical Ending
-    After a day full of adventure, Patrick returned home with a heart full of joy and stories to share. He fell asleep with the melodies of the enchanting forest still in his ears, knowing that adventures can be found everywhere if you are curious.
+//     Part 5: A Magical Ending
+//     After a day full of adventure, Patrick returned home with a heart full of joy and stories to share. He fell asleep with the melodies of the enchanting forest still in his ears, knowing that adventures can be found everywhere if you are curious.
     
-    ###
-    Main Character: ${mainCharacter}
-    plot: ${plot}
+//     ###
+//     Main Character: ${mainCharacter}
+//     plot: ${plot}
 
-    part 1:
+//     part 1:
 
-    part 2:
+//     part 2:
 
-    part: 3
+//     part: 3
 
-    part 4:
+//     part 4:
 
-    part 5:
+//     part 5:
 
-    `,
-    max_tokens: 200,
-    temperature: 0.7
-  })
-  return response.choices[0].text
-
-
-}
+//     `,
+//     max_tokens: 200,
+//     temperature: 0.7
+//   })
+//   return response.choices[0].text
 
 
-export async function fetchImages(){
+// }
 
-
-}
