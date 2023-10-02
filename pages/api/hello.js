@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// import { process } from '/env';
+import { process } from '/env';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
