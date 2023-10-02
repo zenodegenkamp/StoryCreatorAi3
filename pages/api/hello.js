@@ -15,7 +15,9 @@ export async function fetchBotReply(mainCharacter) {
       body: mainCharacter
     })
     const data = await response.json()
-    console.log("APIFILE" + data)
+
+    console.log("APIFILE " + JSON.stringify(data));
+
   
     return data
 
@@ -41,27 +43,31 @@ export async function fetchBotReply(mainCharacter) {
 
 }
 
-export async function fetchShortStory(mainCharacter, plot) {
+// export async function fetchShortStory(mainCharacter, plot) {
 
 
-  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchStory'
+//   const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchStory'
 
-  const body = {
-    mainCharacter: mainCharacter,
-    plot: plot
-  }
+//   const body = {
+//     mainCharacter: mainCharacter,
+//     plot: plot
+//   }
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'text/plain',
-        Accept: "application/json" 
-      },
-      body: mainCharacter, plot
-    })
-    const data = await response.json()
+//     const response = await fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'content-type': 'text/plain',
+//         Accept: "application/json" 
+//       },
+//       body: mainCharacter, plot
+//     })
+//     const data = await response.json()
   
-    return data
+//     return data
+
+
+
+
   // const response = await openai.completions.create({
   //   model: 'text-davinci-003',
   //   prompt: `Generate an enchanting story for children that can be read before bedtime.
