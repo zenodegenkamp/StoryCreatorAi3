@@ -55,6 +55,7 @@ export async function fetchShortStory(mainCharacter, plot) {
       method: 'POST',
       headers: {
         'content-type': 'text/plain',
+        Accept: "application/json" 
       },
       body: mainCharacter, plot
     })
