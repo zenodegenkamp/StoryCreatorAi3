@@ -10,6 +10,7 @@ export async function fetchBotReply(mainCharacter) {
       method: 'POST',
       headers: {
         'content-type': 'text/plain',
+        Accept: "application/json" 
       },
       body: mainCharacter
     })
