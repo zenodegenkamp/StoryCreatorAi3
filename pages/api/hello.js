@@ -1,27 +1,35 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 
-
 export async function fetchBotReply(mainCharacter) {
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAI';
 
-    const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAI'
-
+  try {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'content-type': 'text/plain',
-        Accept: "application/json" 
+        'Content-Type': 'text/plain',
+        Accept: 'application/json',
       },
-      body: mainCharacter
-    })
+      body: mainCharacter,
+    });
 
-    console.log(response.status)
-    const data = await response.json()
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log("APIFILE " + JSON.stringify(data));
+      return data;
+    } else {
+      console.error("Error fetching data: ", response.statusText);
+      // Handle the error appropriately, e.g., show an error message to the user.
+      return { error: response.statusText };
+    }
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    // Handle the error appropriately, e.g., show an error message to the user.
+    return { error: error.message };
+  }
+}
 
-    console.log("APIFILE " + JSON.stringify(data));
-
-  
-    return data
 
     // const response = await openai.completions.create({
     //     model: 'text-davinci-003',
@@ -43,7 +51,7 @@ export async function fetchBotReply(mainCharacter) {
     //   })
     //   return response.choices[0].text
 
-}
+
 
 // export async function fetchShortStory(mainCharacter, plot) {
 
