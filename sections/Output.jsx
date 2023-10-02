@@ -20,12 +20,6 @@ export default function Output(props){
   const mainCharacter = props.FeedbackData?.mainCharacter
   const plot = props.FeedbackData?.plot
 
- 
-  // console.log(mainCharacter)
-  console.log(loading + " ik ben aan het loaden")
-  console.log(mainCharacter + " ik ben de main char")
-  console.log(plot + " ik ben de plot")
-
   if (aiResponse){
     props.setAiWaitingReponse(aiResponse)
   }
