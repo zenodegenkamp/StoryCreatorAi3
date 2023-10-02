@@ -28,8 +28,9 @@ export default function Output(props){
       async function fetchData() {
         try {
           if (mainCharacter){
-            console.log(mainCharacter)
-            const response = await fetchBotReply(String(mainCharacter));
+            console.log("dit is the main character" + mainCharacter)
+            console.log("is het een string" + mainCharacter)
+            const response = await fetchBotReply(mainCharacter);
             console.log("response" + response.reply)
             setAiResponse(response)
             setLoading(true)

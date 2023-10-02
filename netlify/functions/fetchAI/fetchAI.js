@@ -11,6 +11,9 @@ const openai = new OpenAI({
 
 const handler = async (event) => {
   console.log("event.body" + event.body)
+  const mainCharacter = event.body.mainCharacter;
+  console.log(mainCharacter = "ik ben de main character in de functie")
+
   try {
      const completion = await openai.completions.create({
         model: 'text-davinci-003',
