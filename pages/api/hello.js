@@ -8,15 +8,13 @@ export default async function fetchBotReply(mainCharacter) {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/plain',
-        Accept: 'application/json',
+        'content-type': 'text/plain',
       },
       body: mainCharacter,
     });
 
     if (response.status === 200) {
       const data = await response.json();
-      console.log("APIFILE " + JSON.stringify(data));
       return data;
     } else {
       console.error("Error fetching data: ", response.statusText);
