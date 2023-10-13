@@ -59,7 +59,7 @@ export default function Output(props){
               console.log("in de output ben ik de shortShorty" + shortStory.reply)
               setAiStory(shortStory.reply)
               const urlToImage = await fetchUrlForImage(shortStory.reply)
-              console.log("ik ben de url to image in de output page" + urlToImage)
+              console.log("ik ben de url to image in de output page" + urlToImage.reply)
               // const urlToImage = await fetchUrlForImage(shortStory)
               // const image = await fetchImage(urlToImage)
               
