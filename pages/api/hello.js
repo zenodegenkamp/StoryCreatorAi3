@@ -13,7 +13,7 @@ export default async function fetchBotReply(mainCharacter) {
       headers: {
         'content-type': 'text/plain',
       },
-      body: mainCharacter, // Convert mainCharacter to JSON string
+      body: mainCharacter, 
     });
 
     if (response.status === 200) {
