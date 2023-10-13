@@ -17,7 +17,6 @@ const handler = async (event) => {
     console.log(`ikbeninFETCHAI + ${event.body}`)
      const completion = await openai.completions.create({
         model: 'text-davinci-003',
-        "type": "application/json",
         prompt: `Generate a short twitter like message to enthusiastically say that you are hyped to create a story for the main character that is given by ${mainCharacter}
         ###
         main character: Zeno
