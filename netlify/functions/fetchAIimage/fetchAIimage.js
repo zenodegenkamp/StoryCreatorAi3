@@ -18,7 +18,7 @@ const handler = async (event) => {
    
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply: response.choices[0].url }),
+      body: JSON.stringify({ reply: response.data[0].url }),
       
     }
   } catch (error) {
