@@ -10,9 +10,9 @@ export default async function fetchBotReply(mainCharacter) {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'content-type': 'text/plain',
+        'content-type': 'application/json', // Set content type to JSON
       },
-      body: mainCharacter,
+      body: JSON.stringify({ mainCharacter }), // Convert mainCharacter to JSON string
     });
 
     if (response.status === 200) {
