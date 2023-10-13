@@ -13,8 +13,6 @@ import { fadeIn, staggerContainer, zoomIn } from '../utils/motion';
 
 export default function Output(props){
 
-  console.log("ik heb props in output" + props)
-  console.log("ik ben de main character in output" + props.FeedbackData?.mainCharacter)
   const [aiResponse, setAiResponse] = React.useState(null)
   const [aiStory, setAiStory] = React.useState("")
   const [aiImage, setAiImage] = React.useState("")
@@ -52,6 +50,7 @@ export default function Output(props){
 
           try{
 
+            
             if (mainCharacter && plot){
 
             
