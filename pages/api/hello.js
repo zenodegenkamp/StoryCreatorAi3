@@ -109,7 +109,7 @@ export async function fetchShortStory(mainCharacter, plot) {
 // }
 
 
-export default async function fetchUrlForImage(shortStory) {
+export async function fetchUrlForImage(shortStory) {
 
   const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAIurlToImage'
 
