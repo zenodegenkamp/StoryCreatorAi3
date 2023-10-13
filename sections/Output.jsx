@@ -28,8 +28,8 @@ export default function Output(props){
       async function fetchData() {
         try {
           if (mainCharacter){
-            console.log("dit is the main character" + mainCharacter)
-            console.log("is het een string" + mainCharacter)
+            console.log('mainCharacter:', mainCharacter);
+            console.log('Type of mainCharacter:', typeof mainCharacter);
             const response = await fetchBotReply(mainCharacter);
             console.log("response" + response.reply)
             setAiResponse(response)
