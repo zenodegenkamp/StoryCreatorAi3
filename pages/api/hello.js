@@ -109,29 +109,56 @@ export async function fetchShortStory(mainCharacter, plot) {
 // }
 
 
-///////
+export default async function fetchUrlForImage(shortStory) {
+
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAIurlToImage'
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'text/plain',
+      },
+      body: shortStory, 
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      return data;
+    } else {
+      console.error("Error fetching data: ", response.statusText);
+      // Handle the error appropriately, e.g., show an error message to the user.
+      return { error: response.statusText };
+    }
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    // Handle the error appropriately, e.g., show an error message to the user.
+    return { error: error.message };
+  }
+}
+
 
 // export async function fetchUrlForImage(shortStory) {
 
 //   const response = await openai.completions.create({
 //     model: 'text-davinci-003',
-//     prompt: `
-//     Generate a description for an image that illustrates the enchanting story created earlier.
-//     The image should align with the story ${shortStory}.
+  //   prompt: `
+  //   Generate a description for an image that illustrates the enchanting story created earlier.
+  //   The image should align with the story ${shortStory}.
 
-//     ### 
-//     Short Story: In a magical forest, Mia discovers a mysterious door leading to a world full of colors and joy.
-//     Image Prompt: No text in the image. Imagine stepping through an enchanting door and witnessing a splendid landscape, with colorful trees and friendly animals greeting you. Mia stands in awe as the magical world unfolds before her.
-//     ###
-//     Short Story: During an enchanting night, Liam travels on the back of a star to a realm filled with dreams and adventures.
-//     Image Prompt: No text in the image. Picture yourself floating through the nighttime sky on the back of a radiant star. Stars twinkle around you as you enter a world of shimmering dreams. Liam smiles as he explores the realm of adventures.
-//     ### 
-//     Short Story: ${shortStory}
-//     Image Prompt:
-//     `,
-//     max_tokens: 200,
-//     temperature: 0.8
-//   })
+  //   ### 
+  //   Short Story: In a magical forest, Mia discovers a mysterious door leading to a world full of colors and joy.
+  //   Image Prompt: No text in the image. Imagine stepping through an enchanting door and witnessing a splendid landscape, with colorful trees and friendly animals greeting you. Mia stands in awe as the magical world unfolds before her.
+  //   ###
+  //   Short Story: During an enchanting night, Liam travels on the back of a star to a realm filled with dreams and adventures.
+  //   Image Prompt: No text in the image. Picture yourself floating through the nighttime sky on the back of a radiant star. Stars twinkle around you as you enter a world of shimmering dreams. Liam smiles as he explores the realm of adventures.
+  //   ### 
+  //   Short Story: ${shortStory}
+  //   Image Prompt:
+  //   `,
+  //   max_tokens: 200,
+  //   temperature: 0.8
+  // })
 //   return response.choices[0].text
 
 // }
