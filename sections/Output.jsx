@@ -33,7 +33,7 @@ export default function Output(props){
             console.log('Type of mainCharacter:', typeof mainCharacter);
             const response = await fetchBotReply(mainCharacter);
             console.log("response" + response.reply)
-            setAiResponse(response)
+            setAiResponse(response.reply)
             setLoading(true)
           }
         } catch (error) {
