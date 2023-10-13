@@ -56,7 +56,7 @@ export default async function fetchBotReply(mainCharacter) {
 export async function fetchShortStory(mainCharacter, plot) {
 
 
-  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchStory'
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAIStory'
 
   const body = {
     mainCharacter: mainCharacter,
