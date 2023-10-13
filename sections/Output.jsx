@@ -2,6 +2,7 @@
 import fetchBotReply from '../pages/api/hello'
 import { fetchShortStory } from '../pages/api/hello';
 import {fetchUrlForImage} from '../pages/api/hello'
+import { fetchImage } from '../pages/api/hello';
 // import { fetchShortStory } from '../pages/api/hello'
 // import { fetchUrlForImage } from '../pages/api/hello'
 // import { fetchImage } from '../pages/api/hello'
@@ -60,13 +61,15 @@ export default function Output(props){
               setAiStory(shortStory.reply)
               const urlToImage = await fetchUrlForImage(shortStory.reply)
               console.log("ik ben de url to image in de output page" + urlToImage.reply)
+
+              const image = await fetchImage(urlToImage.reply)
               // const urlToImage = await fetchUrlForImage(shortStory)
               // const image = await fetchImage(urlToImage)
               
-              // if (image){
-              //     setAiImage(image)
-              //     setLoading(false)
-              // }
+              if (image){
+                  setAiImage(image)
+                  setLoading(false)
+              }
           }
           } catch (error) {
               console.error('Error fetching other data:', error)

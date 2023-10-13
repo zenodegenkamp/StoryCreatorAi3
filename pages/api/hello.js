@@ -163,6 +163,35 @@ export async function fetchUrlForImage(shortStory) {
 
 // }
 
+export async function fetchImage(urlToImage) {
+
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchImage'
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'text/plain',
+      },
+      body: urlToImage, 
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      return data;
+    } else {
+      console.error("Error fetching data: ", response.statusText);
+      // Handle the error appropriately, e.g., show an error message to the user.
+      return { error: response.statusText };
+    }
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    // Handle the error appropriately, e.g., show an error message to the user.
+    return { error: error.message };
+  }
+}
+
+
 // export async function fetchImage(imagePrompt){
 //   const response = await openai.images.generate({
 //     prompt: `No text on the illustration. Create a colorful and magical illustration that perfectly complements ${imagePrompt}`,
