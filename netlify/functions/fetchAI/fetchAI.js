@@ -11,6 +11,8 @@ const openai = new OpenAI({
 
 const handler = async (event) => {
 
+  console.log(`ikbeninFETCHAI + ${event.body}`)
+
   try {
      const completion = await openai.completions.create({
         model: 'text-davinci-003',
