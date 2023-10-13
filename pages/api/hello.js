@@ -4,7 +4,7 @@
 export default async function fetchBotReply(mainCharacter) {
   const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAI';
 
-  console.log(typeof mainCharacter === 'string')
+  
 
   try {
     const response = await fetch(url, {
