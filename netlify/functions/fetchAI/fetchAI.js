@@ -10,18 +10,6 @@ const openai = new OpenAI({
 
 
 const handler = async (event) => {
-  console.log("event.body" + event.body)
-
- // Parse the JSON string from event.body into an object
- const requestBody = JSON.parse(event.body);
-
- // Validate the mainCharacter parameter.
- if (typeof requestBody.mainCharacter !== 'string') {
-   throw new Error('The mainCharacter parameter must be a string.');
- }
-
- const mainCharacter = requestBody.mainCharacter;
- console.log(mainCharacter); // Access mainCharacter as a string
 
   try {
      const completion = await openai.completions.create({
@@ -38,7 +26,7 @@ const handler = async (event) => {
         main character: Patrick
         message: Message: Hi Patrick, I'm super excited to write a story about you! You're going on an adventure and experiencing all sorts of fun things. Let's bring your story to life!
         ###
-        main character: ${mainCharacter}
+        main character: ${event.body}
         message: 
         `,
         max_tokens: 100
