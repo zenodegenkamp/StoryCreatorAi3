@@ -165,7 +165,7 @@ export async function fetchUrlForImage(shortStory) {
 
 export async function fetchImage(urlToImage) {
 
-  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchImage'
+  const url = 'https://marvelous-fenglisu-f6d29b.netlify.app/.netlify/functions/fetchAIimage'
 
   try {
     const response = await fetch(url, {
