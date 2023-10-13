@@ -60,10 +60,8 @@ export default function Output(props){
               setAiStory(shortStory.reply)
               const urlToImage = await fetchUrlForImage(shortStory.reply)
             
-              console.log("ik ben de type van de url" + typeof(urlToImage.reply))
               const image = await fetchImage(urlToImage.reply)
-              // const urlToImage = await fetchUrlForImage(shortStory)
-              // const image = await fetchImage(urlToImage)
+              
               
               if (image){
                   setAiImage(image.reply)
