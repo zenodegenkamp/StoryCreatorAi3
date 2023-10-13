@@ -1,6 +1,7 @@
 'use client';
 import fetchBotReply from '../pages/api/hello'
 import { fetchShortStory } from '../pages/api/hello';
+import fetchUrlForImage from '../pages/api/hello'
 // import { fetchShortStory } from '../pages/api/hello'
 // import { fetchUrlForImage } from '../pages/api/hello'
 // import { fetchImage } from '../pages/api/hello'
@@ -56,7 +57,9 @@ export default function Output(props){
             
               const shortStory = await fetchShortStory(mainCharacter, plot)
               console.log("in de output ben ik de shortShorty" + shortStory.reply)
-              // setAiStory(shortStory)
+              setAiStory(shortStory.reply)
+              const urlToImage = await fetchUrlForImage(shortStory.reply)
+              console.log("ik ben de url to image in de output page" + urlToImage)
               // const urlToImage = await fetchUrlForImage(shortStory)
               // const image = await fetchImage(urlToImage)
               
