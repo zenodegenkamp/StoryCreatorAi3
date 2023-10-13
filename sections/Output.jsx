@@ -62,6 +62,7 @@ export default function Output(props){
               const urlToImage = await fetchUrlForImage(shortStory.reply)
               console.log("ik ben de url to image in de output page" + urlToImage.reply)
 
+              console.log("ik ben de type van de url" + typeof(urlToImage.reply))
               const image = await fetchImage(urlToImage.reply)
               // const urlToImage = await fetchUrlForImage(shortStory)
               // const image = await fetchImage(urlToImage)
